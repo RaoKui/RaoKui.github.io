@@ -331,23 +331,20 @@
       
         
           
-            <p> Android6.0之后，官方将权限分为普通权限和危险权限，危险权限血需要动态设置</p>
-<h4 id="危险权限"><a href="#危险权限" class="headerlink" title="危险权限"></a>危险权限</h4><ul>
-<li>CAMERA</li>
-<li>READ_CALENDAR、WRITE_CALENDAR</li>
-<li>READ_CONTACTS、WRITE_CONTACTS、GET_ACCOUNTS</li>
-<li>ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION</li>
-<li>READ_AUDIO</li>
-<li>READ_PHTONE_STATE、CALL_PHONE、READ_CALL_LOG、WRITE_CALL_LOG、ADD_VOICEMAIL、USE_SIP、PROCESS_OUTGOING_CALLS</li>
-<li>BODY_SENSORS</li>
-<li>SEND_SMS、RECEIVE_SMS、READ_SMS、RECEIVE_WAP_PUSH、RECEIVE_MMS</li>
-<li>READ_EXTERNAL_STORAGE、WRITE_EXTERNAL_STORAGE</li>
-</ul>
-<h4 id="检查权限"><a href="#检查权限" class="headerlink" title="检查权限"></a>检查权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 调用系统检测权限方法， 返回一个int值</span><br><span class="line">ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 缺失权限，值为-1</span><br><span class="line"> PackageManager.PERMISSION_DENIED</span><br><span class="line"> </span><br><span class="line"> // 拥有该权限，值为0</span><br><span class="line"> PackageManager.PERMISSION_GRANTED</span><br></pre></td></tr></table></figure>
-<h4 id="请求权限"><a href="#请求权限" class="headerlink" title="请求权限"></a>请求权限</h4><p>请求权限方法，该方法会回调<code>onRequestPermissionsResult</code>方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 字符串数组，里面申明需要得权限</span><br><span class="line"> ActivityCompat.requestPermissions(activity, new String[]&#123;Manifest.permission.ACCESS_COARSE_LOCATION&#125;, REQUEST_CODE);</span><br></pre></td></tr></table></figure></p>
-<h4 id="请求权限回调"><a href="#请求权限回调" class="headerlink" title="请求权限回调"></a>请求权限回调</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) &#123;</span><br><span class="line">       if (requestCode == REQUEST_LOCATION_CODE) &#123;</span><br><span class="line">           if (grantResults.length &gt; 0) &#123;</span><br><span class="line">               for (int grantResult : grantResults) &#123;</span><br><span class="line">                   if (grantResult != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                       if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)) &#123;</span><br><span class="line">                       // shouldShowRequestPermissionRationale方法判断用户是否点击了不在提示，为true时下次还会出现，false之后就不会出现请求的弹窗，此时提示用户应该开启权限</span><br><span class="line">                           new AlertDialog.Builder(getContext())</span><br><span class="line">                                   .setMessage(&quot;需要开启权限才能使用该功能&quot;)</span><br><span class="line">                                   .setPositiveButton(&quot;设置&quot;, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">                                       @Override</span><br><span class="line">                                       public void onClick(DialogInterface dialog, int which) &#123;</span><br><span class="line">                                       // 前往系统设置权限得位置</span><br><span class="line">                                           Intent intent = new Intent();</span><br><span class="line">                                           intent.setAction(&quot;android.settings.APPLICATION_DETAILS_SETTINGS&quot;);</span><br><span class="line">                                           intent.setData(Uri.fromParts(&quot;package&quot;, getContext().getPackageName(), null));</span><br><span class="line">                                           startActivity(intent);</span><br><span class="line">                                       &#125;</span><br><span class="line">                                   &#125;)</span><br><span class="line">                                   .setNegativeButton(&quot;取消&quot;, null)</span><br><span class="line">                                   .create()</span><br><span class="line">                                   .show();</span><br><span class="line">                       &#125; else &#123;</span><br><span class="line">                           Toast.makeText(getContext(), &quot;XX权限被拒绝，请前往设置开启权限&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-          
+           Android6.0之后，官方将权限分为普通权限和危险权限，危险权限血需要动态设置
+危险权限
+CAMERA
+READ_CALENDAR、WRITE_CALENDAR
+READ_CONTACTS、WRITE_CONTACTS、GET_ACCOUNTS
+ACCESS_FINE_LOCATION、ACC
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/14/android6-0动态权限管理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
