@@ -96,14 +96,14 @@
 
 <meta name="description" content="事件传递的三个阶段分发（dispatchTouchEvent） 返回true表示事件被当前视图消费掉了，不在分发； surper.dispatchTouchEvent表示继续分发该事件； viewGroup及其子类时会调用onInterceptTouchEvent来判断是否拦截该事件  拦截（onInterceptTouchEvent） 只存在 viewGroup及其子类 返回true表示拦截此事">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 事件传递">
+<meta property="og:title" content="Android 触摸事件传递">
 <meta property="og:url" content="http://yoursite.com/2018/07/11/Android-事件传递/index.html">
 <meta property="og:site_name" content="R_K的博客">
 <meta property="og:description" content="事件传递的三个阶段分发（dispatchTouchEvent） 返回true表示事件被当前视图消费掉了，不在分发； surper.dispatchTouchEvent表示继续分发该事件； viewGroup及其子类时会调用onInterceptTouchEvent来判断是否拦截该事件  拦截（onInterceptTouchEvent） 只存在 viewGroup及其子类 返回true表示拦截此事">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-11T12:39:23.687Z">
+<meta property="og:updated_time" content="2018-07-11T12:54:28.700Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 事件传递">
+<meta name="twitter:title" content="Android 触摸事件传递">
 <meta name="twitter:description" content="事件传递的三个阶段分发（dispatchTouchEvent） 返回true表示事件被当前视图消费掉了，不在分发； surper.dispatchTouchEvent表示继续分发该事件； viewGroup及其子类时会调用onInterceptTouchEvent来判断是否拦截该事件  拦截（onInterceptTouchEvent） 只存在 viewGroup及其子类 返回true表示拦截此事">
 
 
@@ -139,7 +139,7 @@
 
 
 
-  <title>Android 事件传递 | R_K的博客</title>
+  <title>Android 触摸事件传递 | R_K的博客</title>
   
 
 
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android 事件传递</h1>
+          <h1 class="post-title" itemprop="name headline">Android 触摸事件传递</h1>
         
 
         <div class="post-meta">
@@ -346,12 +346,18 @@
 <h4 id="有事件传递能力的类"><a href="#有事件传递能力的类" class="headerlink" title="有事件传递能力的类"></a>有事件传递能力的类</h4><h5 id="Activity-和-View"><a href="#Activity-和-View" class="headerlink" title="Activity 和 View"></a>Activity 和 View</h5><p><code>dispatchTouchEvent</code> 、<code>onTouchEvent</code></p>
 <h5 id="ViewGroup"><a href="#ViewGroup" class="headerlink" title="ViewGroup"></a>ViewGroup</h5><p><code>dispatchTouchEvent</code> 、<code>onInterceptTouchEvent</code>、<code>onTouchEvent</code></p>
 <h4 id="View的传递事件"><a href="#View的传递事件" class="headerlink" title="View的传递事件"></a>View的传递事件</h4><ul>
-<li><p>触摸事件从<code>dispatchTouchEvent</code>开始，不认为干预（调用<code>super.XXX</code>方法），事件按照嵌套从外到里传递，到达最里面的View，由它处理事件，<code>true</code>能处理；<code>false</code>不处理，并由外层的onTouchEvent处理</p>
+<li>触摸事件从<code>dispatchTouchEvent</code>开始，不人为干预（调用<code>super.XXX</code>方法），事件按照嵌套从外到里传递，到达最里面的View，由它处理事件，<code>true</code>能处理；<code>false</code>不处理，并由外层的onTouchEvent处理</li>
+<li><p>事件向里传递时，返回<code>ture</code>内层View不在接收事件</p>
 </li>
-<li><p>View控件先执行<code>onTouch</code>，最后执行<code>onClic</code>k，如果<code>onTouch</code> 返回<code>true</code>，事件就不传递</p>
+<li><p>View控件先执行<code>onTouch</code>，最后执行<code>onClick</code>，如果<code>onTouch</code> 返回<code>true</code>，事件就不传递</p>
 </li>
 </ul>
-<h4 id="ViewGroup的传递事件"><a href="#ViewGroup的传递事件" class="headerlink" title="ViewGroup的传递事件"></a>ViewGroup的传递事件</h4>
+<h4 id="ViewGroup的传递事件"><a href="#ViewGroup的传递事件" class="headerlink" title="ViewGroup的传递事件"></a>ViewGroup的传递事件</h4><ul>
+<li>触摸事件Activity -&gt; ViewGroup -&gt;View</li>
+<li>ViewGroup 通过onInterceptTouchEvent事件来拦截，<code>true</code>：不会继续传递给子View；<code>false</code> 、<code>super.onInterceptTouchEvent</code>:事件传递给子View</li>
+<li>子view消费事件后，ViewGroup不在接受</li>
+</ul>
+
       
     </div>
     
