@@ -94,13 +94,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="R_K的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta name="description" content="一、基础 PhoneWindow：每个Activity都会创建一个PhoneWindow，PhoneWindow是Android中最基础的窗口 DecorView :所有View的祖先，本质上是FrameLayout ,是PhoneWindow的内部类二、绘制流程 Measure测量： Layout布局： Draw绘制：三、MeasureSpec 32位整型值，是View一个静态内部类，高两位表示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android View绘制流程">
+<meta property="og:url" content="http://yoursite.com/2018/07/11/Android-View绘制流程/index.html">
 <meta property="og:site_name" content="R_K的博客">
+<meta property="og:description" content="一、基础 PhoneWindow：每个Activity都会创建一个PhoneWindow，PhoneWindow是Android中最基础的窗口 DecorView :所有View的祖先，本质上是FrameLayout ,是PhoneWindow的内部类二、绘制流程 Measure测量： Layout布局： Draw绘制：三、MeasureSpec 32位整型值，是View一个静态内部类，高两位表示">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-11T14:05:33.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R_K的博客">
+<meta name="twitter:title" content="Android View绘制流程">
+<meta name="twitter:description" content="一、基础 PhoneWindow：每个Activity都会创建一个PhoneWindow，PhoneWindow是Android中最基础的窗口 DecorView :所有View的祖先，本质上是FrameLayout ,是PhoneWindow的内部类二、绘制流程 Measure测量： Layout布局： Draw绘制：三、MeasureSpec 32位整型值，是View一个静态内部类，高两位表示">
 
 
 
@@ -129,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/11/Android-View绘制流程/"/>
 
 
 
 
 
-  <title>归档 | R_K的博客</title>
+  <title>Android View绘制流程 | R_K的博客</title>
   
 
 
@@ -160,7 +164,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,148 +248,151 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/Android-View绘制流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RaoKui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="R_K的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Android View绘制流程</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T22:04:57+08:00">
+                2018-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 3 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/11/Android-View绘制流程/" itemprop="url">
-              
-                <span itemprop="name">Android View绘制流程</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-11T22:04:57+08:00"
-              content="2018-07-11" >
-          07-11
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/11/Android-事件传递/" itemprop="url">
-              
-                <span itemprop="name">Android 触摸事件传递</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-11T20:38:40+08:00"
-              content="2018-07-11" >
-          07-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/14/android6-0动态权限管理/" itemprop="url">
-              
-                <span itemprop="name">android6.0动态权限管理</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-14T20:41:15+08:00"
-              content="2018-01-14" >
-          01-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h4 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h4><ul>
+<li><strong><em>PhoneWindow</em></strong>：每个<code>Activity</code>都会创建一个<code>PhoneWindow</code>，<code>PhoneWindow</code>是Android中最基础的窗口</li>
+<li><strong><em>DecorView</em></strong> :所有View的祖先，本质上是<code>FrameLayout</code> ,是<code>PhoneWindow</code>的内部类<h4 id="二、绘制流程"><a href="#二、绘制流程" class="headerlink" title="二、绘制流程"></a>二、绘制流程</h4></li>
+<li><strong><em>Measure</em></strong>测量：</li>
+<li><strong><em>Layout</em></strong>布局：</li>
+<li><strong><em>Draw</em></strong>绘制：<h4 id="三、MeasureSpec"><a href="#三、MeasureSpec" class="headerlink" title="三、MeasureSpec"></a>三、MeasureSpec</h4></li>
+<li>32位整型值，是View一个静态内部类，高两位表示测量模式specModel，低30位表示某种模式下的规格大小specSize</li>
+<li>UNSPECIFIED：不指定测量模式，父视图不限制子视图的大小，子视图想多大多大</li>
+<li>EXACTLY：精确测量模式，具体数值和match_parent时候生效，此模式的测量值就是specSize的值</li>
+<li>AT_MOST：最大值模式，wrap_content时生效，子视图最大值不超过父视图最大值</li>
+</ul>
 
       
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/11/Android-事件传递/" rel="next" title="Android 触摸事件传递">
+                <i class="fa fa-chevron-left"></i> Android 触摸事件传递
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -393,6 +400,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -413,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -458,6 +478,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、基础"><span class="nav-number">1.</span> <span class="nav-text">一、基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、绘制流程"><span class="nav-number">2.</span> <span class="nav-text">二、绘制流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、MeasureSpec"><span class="nav-number">3.</span> <span class="nav-text">三、MeasureSpec</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -571,11 +607,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
 
 
   
