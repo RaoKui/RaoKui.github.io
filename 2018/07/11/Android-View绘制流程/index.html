@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="一、基础 PhoneWindow：每个Activity都会创建一个PhoneWindow，PhoneWindow是Android中最基础的窗口 DecorView :所有View的祖先，本质上是FrameLayout ,是PhoneWindow的内部类二、绘制流程 Measure测量： Layout布局： Draw绘制：三、MeasureSpec 32位整型值，是View一个静态内部类，高两位表示">
+<meta name="description" content="一、基础 PhoneWindow：每个Activity都会创建一个PhoneWindow，PhoneWindow是Android中最基础的窗口 DecorView :所有View的祖先，本质上是FrameLayout,是PhoneWindow的内部类二、绘制流程 Measure测量：由performMeasure方法开始，ViewGroup遍历子view，调用measureChild方法，子Vie">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android View绘制流程">
 <meta property="og:url" content="http://yoursite.com/2018/07/11/Android-View绘制流程/index.html">
 <meta property="og:site_name" content="R_K的博客">
-<meta property="og:description" content="一、基础 PhoneWindow：每个Activity都会创建一个PhoneWindow，PhoneWindow是Android中最基础的窗口 DecorView :所有View的祖先，本质上是FrameLayout ,是PhoneWindow的内部类二、绘制流程 Measure测量： Layout布局： Draw绘制：三、MeasureSpec 32位整型值，是View一个静态内部类，高两位表示">
+<meta property="og:description" content="一、基础 PhoneWindow：每个Activity都会创建一个PhoneWindow，PhoneWindow是Android中最基础的窗口 DecorView :所有View的祖先，本质上是FrameLayout,是PhoneWindow的内部类二、绘制流程 Measure测量：由performMeasure方法开始，ViewGroup遍历子view，调用measureChild方法，子Vie">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-11T14:10:01.238Z">
+<meta property="og:updated_time" content="2018-07-12T14:05:58.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android View绘制流程">
-<meta name="twitter:description" content="一、基础 PhoneWindow：每个Activity都会创建一个PhoneWindow，PhoneWindow是Android中最基础的窗口 DecorView :所有View的祖先，本质上是FrameLayout ,是PhoneWindow的内部类二、绘制流程 Measure测量： Layout布局： Draw绘制：三、MeasureSpec 32位整型值，是View一个静态内部类，高两位表示">
+<meta name="twitter:description" content="一、基础 PhoneWindow：每个Activity都会创建一个PhoneWindow，PhoneWindow是Android中最基础的窗口 DecorView :所有View的祖先，本质上是FrameLayout,是PhoneWindow的内部类二、绘制流程 Measure测量：由performMeasure方法开始，ViewGroup遍历子view，调用measureChild方法，子Vie">
 
 
 
@@ -331,11 +331,11 @@
 
       
         <h4 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h4><ul>
-<li><strong><em>PhoneWindow</em></strong>：每个<code>Activity</code>都会创建一个<code>PhoneWindow</code>，<code>PhoneWindow</code>是Android中最基础的窗口</li>
-<li><strong><em>DecorView</em></strong> :所有View的祖先，本质上是<code>FrameLayout</code> ,是<code>PhoneWindow</code>的内部类<h4 id="二、绘制流程"><a href="#二、绘制流程" class="headerlink" title="二、绘制流程"></a>二、绘制流程</h4></li>
-<li><strong><em>Measure</em></strong>测量：</li>
-<li><strong><em>Layout</em></strong>布局：</li>
-<li><strong><em>Draw</em></strong>绘制：<h4 id="三、MeasureSpec"><a href="#三、MeasureSpec" class="headerlink" title="三、MeasureSpec"></a>三、MeasureSpec</h4></li>
+<li><strong><em>PhoneWindow</em></strong>：每个Activity都会创建一个PhoneWindow，PhoneWindow是Android中最基础的窗口</li>
+<li><strong><em>DecorView</em></strong> :所有View的祖先，本质上是FrameLayout,是PhoneWindow的内部类<h4 id="二、绘制流程"><a href="#二、绘制流程" class="headerlink" title="二、绘制流程"></a>二、绘制流程</h4></li>
+<li><strong><em>Measure</em></strong>测量：<br>由<code>performMeasure</code>方法开始，ViewGroup遍历子view，调用<code>measureChild</code>方法，子View调用<code>measure</code>方法测量，最终在<code>onMeasure</code>方法回调，可以通过<strong>重写<code>onMeasure</code>方法自定义测量过程</strong>;<br><code>setMeasureDimension</code>方法用于设置view的测量宽高，默认调用<code>getDefaultSize</code>方法来获取宽高</li>
+<li><strong><em>Layout</em></strong>布局：<br>ViewGroup的<code>onLayout</code>用来确定子view在父布局中的位置；<br>View用过<code>layout</code>方法来确定自己在父布局中的位置<br>如果是<code>ViewGroup</code>类型的，重写<code>onLayout</code>方法来自定义位置；</li>
+<li><strong><em>Draw</em></strong>绘制：<br>绘制从<code>performDraw</code>开始，最终调用每个View的<code>Draw</code>方法；<br>绘制View背景 -&gt; 保存canvas图层 -&gt;  绘制View内容  -&gt; 绘制View的子View   -&gt;绘制View的fading边缘并恢复图层  -&gt; 绘制View的装饰；<br>View的<code>onDraw</code>方法默认是空实现<h4 id="三、MeasureSpec"><a href="#三、MeasureSpec" class="headerlink" title="三、MeasureSpec"></a>三、MeasureSpec</h4></li>
 <li>32位整型值，是View一个静态内部类，高两位表示测量模式specModel，低30位表示某种模式下的规格大小specSize</li>
 <li>UNSPECIFIED：不指定测量模式，父视图不限制子视图的大小，子视图想多大多大</li>
 <li>EXACTLY：精确测量模式，具体数值和match_parent时候生效，此模式的测量值就是specSize的值</li>
