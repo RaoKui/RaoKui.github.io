@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="gradle," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Android6.0之后，官方将权限分为普通权限和危险权限，危险权限血需要动态设置 危险权限 CAMERA READ_CALENDAR、WRITE_CALENDAR READ_CONTACTS、WRITE_CONTACTS、GET_ACCOUNTS ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION READ_AUDIO READ_PHTONE_STATE、C">
-<meta name="keywords" content="Android">
+<meta name="description" content="全局build.gradlebuildscript部分： 1234567891011buildscript &amp;#123;        repositories &amp;#123;// 指定使用的仓库        google()        jcenter()    &amp;#125;    dependencies &amp;#123;// 声明依赖使用的插件版本        classpath &amp;apos">
+<meta name="keywords" content="gradle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android6.0动态权限管理">
-<meta property="og:url" content="http://yoursite.com/2018/01/14/android6-0动态权限管理/index.html">
+<meta property="og:title" content="android Gradle学习">
+<meta property="og:url" content="http://yoursite.com/2018/07/18/android-Gradle学习/index.html">
 <meta property="og:site_name" content="R_K的博客">
-<meta property="og:description" content="Android6.0之后，官方将权限分为普通权限和危险权限，危险权限血需要动态设置 危险权限 CAMERA READ_CALENDAR、WRITE_CALENDAR READ_CONTACTS、WRITE_CONTACTS、GET_ACCOUNTS ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION READ_AUDIO READ_PHTONE_STATE、C">
+<meta property="og:description" content="全局build.gradlebuildscript部分： 1234567891011buildscript &amp;#123;        repositories &amp;#123;// 指定使用的仓库        google()        jcenter()    &amp;#125;    dependencies &amp;#123;// 声明依赖使用的插件版本        classpath &amp;apos">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-11T14:10:30.268Z">
+<meta property="og:updated_time" content="2018-07-18T14:41:32.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android6.0动态权限管理">
-<meta name="twitter:description" content="Android6.0之后，官方将权限分为普通权限和危险权限，危险权限血需要动态设置 危险权限 CAMERA READ_CALENDAR、WRITE_CALENDAR READ_CONTACTS、WRITE_CONTACTS、GET_ACCOUNTS ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION READ_AUDIO READ_PHTONE_STATE、C">
+<meta name="twitter:title" content="android Gradle学习">
+<meta name="twitter:description" content="全局build.gradlebuildscript部分： 1234567891011buildscript &amp;#123;        repositories &amp;#123;// 指定使用的仓库        google()        jcenter()    &amp;#125;    dependencies &amp;#123;// 声明依赖使用的插件版本        classpath &amp;apos">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/14/android6-0动态权限管理/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/18/android-Gradle学习/"/>
 
 
 
 
 
-  <title>android6.0动态权限管理 | R_K的博客</title>
+  <title>android Gradle学习 | R_K的博客</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/14/android6-0动态权限管理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/android-Gradle学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RaoKui">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">android6.0动态权限管理</h1>
+          <h1 class="post-title" itemprop="name headline">android Gradle学习</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-14T20:41:15+08:00">
-                2018-01-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-18T22:40:53+08:00">
+                2018-07-18
               </time>
             
 
@@ -330,22 +330,19 @@
       
 
       
-        <p> Android6.0之后，官方将权限分为普通权限和危险权限，危险权限血需要动态设置</p>
-<h4 id="危险权限"><a href="#危险权限" class="headerlink" title="危险权限"></a>危险权限</h4><ul>
-<li>CAMERA</li>
-<li>READ_CALENDAR、WRITE_CALENDAR</li>
-<li>READ_CONTACTS、WRITE_CONTACTS、GET_ACCOUNTS</li>
-<li>ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION</li>
-<li>READ_AUDIO</li>
-<li>READ_PHTONE_STATE、CALL_PHONE、READ_CALL_LOG、WRITE_CALL_LOG、ADD_VOICEMAIL、USE_SIP、PROCESS_OUTGOING_CALLS</li>
-<li>BODY_SENSORS</li>
-<li>SEND_SMS、RECEIVE_SMS、READ_SMS、RECEIVE_WAP_PUSH、RECEIVE_MMS</li>
-<li>READ_EXTERNAL_STORAGE、WRITE_EXTERNAL_STORAGE</li>
-</ul>
-<h4 id="检查权限"><a href="#检查权限" class="headerlink" title="检查权限"></a>检查权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 调用系统检测权限方法， 返回一个int值</span><br><span class="line">ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 缺失权限，值为-1</span><br><span class="line"> PackageManager.PERMISSION_DENIED</span><br><span class="line"> </span><br><span class="line"> // 拥有该权限，值为0</span><br><span class="line"> PackageManager.PERMISSION_GRANTED</span><br></pre></td></tr></table></figure>
-<h4 id="请求权限"><a href="#请求权限" class="headerlink" title="请求权限"></a>请求权限</h4><p>请求权限方法，该方法会回调<code>onRequestPermissionsResult</code>方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 字符串数组，里面申明需要得权限</span><br><span class="line"> ActivityCompat.requestPermissions(activity, new String[]&#123;Manifest.permission.ACCESS_COARSE_LOCATION&#125;, REQUEST_CODE);</span><br></pre></td></tr></table></figure></p>
-<h4 id="请求权限回调"><a href="#请求权限回调" class="headerlink" title="请求权限回调"></a>请求权限回调</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) &#123;</span><br><span class="line">       if (requestCode == REQUEST_LOCATION_CODE) &#123;</span><br><span class="line">           if (grantResults.length &gt; 0) &#123;</span><br><span class="line">               for (int grantResult : grantResults) &#123;</span><br><span class="line">                   if (grantResult != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                       if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)) &#123;</span><br><span class="line">                       // shouldShowRequestPermissionRationale方法判断用户是否点击了不在提示，为true时下次还会出现，false之后就不会出现请求的弹窗，此时提示用户应该开启权限</span><br><span class="line">                           new AlertDialog.Builder(getContext())</span><br><span class="line">                                   .setMessage(&quot;需要开启权限才能使用该功能&quot;)</span><br><span class="line">                                   .setPositiveButton(&quot;设置&quot;, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">                                       @Override</span><br><span class="line">                                       public void onClick(DialogInterface dialog, int which) &#123;</span><br><span class="line">                                       // 前往系统设置权限得位置</span><br><span class="line">                                           Intent intent = new Intent();</span><br><span class="line">                                           intent.setAction(&quot;android.settings.APPLICATION_DETAILS_SETTINGS&quot;);</span><br><span class="line">                                           intent.setData(Uri.fromParts(&quot;package&quot;, getContext().getPackageName(), null));</span><br><span class="line">                                           startActivity(intent);</span><br><span class="line">                                       &#125;</span><br><span class="line">                                   &#125;)</span><br><span class="line">                                   .setNegativeButton(&quot;取消&quot;, null)</span><br><span class="line">                                   .create()</span><br><span class="line">                                   .show();</span><br><span class="line">                       &#125; else &#123;</span><br><span class="line">                           Toast.makeText(getContext(), &quot;XX权限被拒绝，请前往设置开启权限&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="全局build-gradle"><a href="#全局build-gradle" class="headerlink" title="全局build.gradle"></a>全局build.gradle</h4><p><code>buildscript</code>部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">    </span><br><span class="line">    repositories &#123;// 指定使用的仓库</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;// 声明依赖使用的插件版本</span><br><span class="line">        classpath &apos;com.android.tools.build:gradle:3.1.1&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>allprojects</code>部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 配置项目的整体属性</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Module-build-gradle"><a href="#Module-build-gradle" class="headerlink" title="Module build.gradle"></a>Module build.gradle</h4><p><code>apply plugin</code> :</p>
+<p>描述gradle引入的插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">apply plugin: &apos;com.android.application&apos;// 表示是一个Android Application，这个插件包含了Android项目相关所有工具</span><br></pre></td></tr></table></figure>
+<p><code>android{   }</code> ：</p>
+<p>描述了构建需要用到的所有参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion 27 // 指定编译的Android SDK版本，推荐使用最新的版本，使用最新的lib的话，这里的版本要同步</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId &quot;com.rk.testwebview&quot; // 包名</span><br><span class="line">        minSdkVersion 19 // 最小支持sdk版本，如果使用了库，这个值必须是大于或等于所有其他库中的最大值</span><br><span class="line">        targetSdkVersion 27 // sdk目标版本</span><br><span class="line">        versionCode 1 // 版本code</span><br><span class="line">        versionName &quot;1.0&quot;// 版本号</span><br><span class="line">        testInstrumentationRunner &quot;android.support.test.runner.AndroidJUnitRunner&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled false</span><br><span class="line">            proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>dependencies{   }</code>：</p>
+<p>描述了构建过程中所需要的所有依赖库</p>
+
       
     </div>
     
@@ -362,7 +359,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># Android</a>
+            <a href="/tags/gradle/" rel="tag"># gradle</a>
           
         </div>
       
@@ -375,15 +372,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/07/17/Android-WebView/" rel="next" title="Android WebView">
+                <i class="fa fa-chevron-left"></i> Android WebView
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/11/Android-事件传递/" rel="prev" title="Android 触摸事件传递">
-                Android 触摸事件传递 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,7 +505,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#危险权限"><span class="nav-number">1.</span> <span class="nav-text">危险权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查权限"><span class="nav-number">2.</span> <span class="nav-text">检查权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求权限"><span class="nav-number">3.</span> <span class="nav-text">请求权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求权限回调"><span class="nav-number">4.</span> <span class="nav-text">请求权限回调</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#全局build-gradle"><span class="nav-number">1.</span> <span class="nav-text">全局build.gradle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Module-build-gradle"><span class="nav-number">2.</span> <span class="nav-text">Module build.gradle</span></a></li></ol></div>
             
 
           </div>
