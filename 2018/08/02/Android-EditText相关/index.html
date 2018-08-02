@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="Android控件," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Android6.0之后，官方将权限分为普通权限和危险权限，危险权限血需要动态设置 危险权限 CAMERA READ_CALENDAR、WRITE_CALENDAR READ_CONTACTS、WRITE_CONTACTS、GET_ACCOUNTS ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION READ_AUDIO READ_PHTONE_STATE、C">
-<meta name="keywords" content="Android">
+<meta name="description" content="代码中动态设置hint大小12345// 动态设置hint字体大小        SpannableString spannableString = new SpannableString(getResources().getString(R.string.hint_withdraw_100));        AbsoluteSizeSpan absoluteSizeSpan = new Abs">
+<meta name="keywords" content="Android控件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android6.0动态权限管理">
-<meta property="og:url" content="http://yoursite.com/2018/01/14/android6-0动态权限管理/index.html">
+<meta property="og:title" content="Android EditText相关">
+<meta property="og:url" content="http://yoursite.com/2018/08/02/Android-EditText相关/index.html">
 <meta property="og:site_name" content="R_K的博客">
-<meta property="og:description" content="Android6.0之后，官方将权限分为普通权限和危险权限，危险权限血需要动态设置 危险权限 CAMERA READ_CALENDAR、WRITE_CALENDAR READ_CONTACTS、WRITE_CONTACTS、GET_ACCOUNTS ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION READ_AUDIO READ_PHTONE_STATE、C">
+<meta property="og:description" content="代码中动态设置hint大小12345// 动态设置hint字体大小        SpannableString spannableString = new SpannableString(getResources().getString(R.string.hint_withdraw_100));        AbsoluteSizeSpan absoluteSizeSpan = new Abs">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-11T14:10:30.268Z">
+<meta property="og:updated_time" content="2018-08-02T12:26:12.263Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android6.0动态权限管理">
-<meta name="twitter:description" content="Android6.0之后，官方将权限分为普通权限和危险权限，危险权限血需要动态设置 危险权限 CAMERA READ_CALENDAR、WRITE_CALENDAR READ_CONTACTS、WRITE_CONTACTS、GET_ACCOUNTS ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION READ_AUDIO READ_PHTONE_STATE、C">
+<meta name="twitter:title" content="Android EditText相关">
+<meta name="twitter:description" content="代码中动态设置hint大小12345// 动态设置hint字体大小        SpannableString spannableString = new SpannableString(getResources().getString(R.string.hint_withdraw_100));        AbsoluteSizeSpan absoluteSizeSpan = new Abs">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/14/android6-0动态权限管理/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/02/Android-EditText相关/"/>
 
 
 
 
 
-  <title>android6.0动态权限管理 | R_K的博客</title>
+  <title>Android EditText相关 | R_K的博客</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/14/android6-0动态权限管理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/02/Android-EditText相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RaoKui">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">android6.0动态权限管理</h1>
+          <h1 class="post-title" itemprop="name headline">Android EditText相关</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-14T20:41:15+08:00">
-                2018-01-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-02T20:21:19+08:00">
+                2018-08-02
               </time>
             
 
@@ -330,22 +330,10 @@
       
 
       
-        <p> Android6.0之后，官方将权限分为普通权限和危险权限，危险权限血需要动态设置</p>
-<h4 id="危险权限"><a href="#危险权限" class="headerlink" title="危险权限"></a>危险权限</h4><ul>
-<li>CAMERA</li>
-<li>READ_CALENDAR、WRITE_CALENDAR</li>
-<li>READ_CONTACTS、WRITE_CONTACTS、GET_ACCOUNTS</li>
-<li>ACCESS_FINE_LOCATION、ACCESS_COARSE_LOCATION</li>
-<li>READ_AUDIO</li>
-<li>READ_PHTONE_STATE、CALL_PHONE、READ_CALL_LOG、WRITE_CALL_LOG、ADD_VOICEMAIL、USE_SIP、PROCESS_OUTGOING_CALLS</li>
-<li>BODY_SENSORS</li>
-<li>SEND_SMS、RECEIVE_SMS、READ_SMS、RECEIVE_WAP_PUSH、RECEIVE_MMS</li>
-<li>READ_EXTERNAL_STORAGE、WRITE_EXTERNAL_STORAGE</li>
-</ul>
-<h4 id="检查权限"><a href="#检查权限" class="headerlink" title="检查权限"></a>检查权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 调用系统检测权限方法， 返回一个int值</span><br><span class="line">ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 缺失权限，值为-1</span><br><span class="line"> PackageManager.PERMISSION_DENIED</span><br><span class="line"> </span><br><span class="line"> // 拥有该权限，值为0</span><br><span class="line"> PackageManager.PERMISSION_GRANTED</span><br></pre></td></tr></table></figure>
-<h4 id="请求权限"><a href="#请求权限" class="headerlink" title="请求权限"></a>请求权限</h4><p>请求权限方法，该方法会回调<code>onRequestPermissionsResult</code>方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 字符串数组，里面申明需要得权限</span><br><span class="line"> ActivityCompat.requestPermissions(activity, new String[]&#123;Manifest.permission.ACCESS_COARSE_LOCATION&#125;, REQUEST_CODE);</span><br></pre></td></tr></table></figure></p>
-<h4 id="请求权限回调"><a href="#请求权限回调" class="headerlink" title="请求权限回调"></a>请求权限回调</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) &#123;</span><br><span class="line">       if (requestCode == REQUEST_LOCATION_CODE) &#123;</span><br><span class="line">           if (grantResults.length &gt; 0) &#123;</span><br><span class="line">               for (int grantResult : grantResults) &#123;</span><br><span class="line">                   if (grantResult != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                       if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)) &#123;</span><br><span class="line">                       // shouldShowRequestPermissionRationale方法判断用户是否点击了不在提示，为true时下次还会出现，false之后就不会出现请求的弹窗，此时提示用户应该开启权限</span><br><span class="line">                           new AlertDialog.Builder(getContext())</span><br><span class="line">                                   .setMessage(&quot;需要开启权限才能使用该功能&quot;)</span><br><span class="line">                                   .setPositiveButton(&quot;设置&quot;, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">                                       @Override</span><br><span class="line">                                       public void onClick(DialogInterface dialog, int which) &#123;</span><br><span class="line">                                       // 前往系统设置权限得位置</span><br><span class="line">                                           Intent intent = new Intent();</span><br><span class="line">                                           intent.setAction(&quot;android.settings.APPLICATION_DETAILS_SETTINGS&quot;);</span><br><span class="line">                                           intent.setData(Uri.fromParts(&quot;package&quot;, getContext().getPackageName(), null));</span><br><span class="line">                                           startActivity(intent);</span><br><span class="line">                                       &#125;</span><br><span class="line">                                   &#125;)</span><br><span class="line">                                   .setNegativeButton(&quot;取消&quot;, null)</span><br><span class="line">                                   .create()</span><br><span class="line">                                   .show();</span><br><span class="line">                       &#125; else &#123;</span><br><span class="line">                           Toast.makeText(getContext(), &quot;XX权限被拒绝，请前往设置开启权限&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="代码中动态设置hint大小"><a href="#代码中动态设置hint大小" class="headerlink" title="代码中动态设置hint大小"></a>代码中动态设置hint大小</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 动态设置hint字体大小</span><br><span class="line">        SpannableString spannableString = new SpannableString(getResources().getString(R.string.hint_withdraw_100));</span><br><span class="line">        AbsoluteSizeSpan absoluteSizeSpan = new AbsoluteSizeSpan(12, true);</span><br><span class="line">        spannableString.setSpan(absoluteSizeSpan, 0, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);</span><br><span class="line">        editext.setHint(spannableString);</span><br></pre></td></tr></table></figure>
+<h4 id="取消显示光标"><a href="#取消显示光标" class="headerlink" title="取消显示光标"></a>取消显示光标</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:cursorVisible=&quot;false&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="悬浮hint的EditText"><a href="#悬浮hint的EditText" class="headerlink" title="悬浮hint的EditText"></a>悬浮hint的EditText</h4><p>加入design包，使用design包中的控件TextInputLayout包裹，设置hint即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.TextInputLayout</span><br><span class="line">       android:layout_width=&quot;match_parent&quot;</span><br><span class="line">       android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">       android:layout_marginTop=&quot;10dp&quot;&gt;</span><br><span class="line"></span><br><span class="line">       &lt;EditText</span><br><span class="line">           android:id=&quot;@+id/et_money&quot;</span><br><span class="line">           android:layout_width=&quot;match_parent&quot;</span><br><span class="line">           android:layout_height=&quot;50dp&quot;</span><br><span class="line">           android:layout_margin=&quot;12dp&quot;</span><br><span class="line">           android:hint=&quot;金额&quot;</span><br><span class="line">           android:inputType=&quot;numberDecimal&quot; /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &lt;/android.support.design.widget.TextInputLayout&gt;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -362,7 +350,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># Android</a>
+            <a href="/tags/Android控件/" rel="tag"># Android控件</a>
           
         </div>
       
@@ -375,15 +363,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/07/23/Gradle-学习（二）/" rel="next" title="Gradle 学习（二）">
+                <i class="fa fa-chevron-left"></i> Gradle 学习（二）
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/11/Android-事件传递/" rel="prev" title="Android 触摸事件传递">
-                Android 触摸事件传递 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,7 +496,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#危险权限"><span class="nav-number">1.</span> <span class="nav-text">危险权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查权限"><span class="nav-number">2.</span> <span class="nav-text">检查权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求权限"><span class="nav-number">3.</span> <span class="nav-text">请求权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求权限回调"><span class="nav-number">4.</span> <span class="nav-text">请求权限回调</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码中动态设置hint大小"><span class="nav-number">1.</span> <span class="nav-text">代码中动态设置hint大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取消显示光标"><span class="nav-number">2.</span> <span class="nav-text">取消显示光标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#悬浮hint的EditText"><span class="nav-number">3.</span> <span class="nav-text">悬浮hint的EditText</span></a></li></ol></div>
             
 
           </div>
